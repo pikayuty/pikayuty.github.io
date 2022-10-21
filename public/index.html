@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta http-equiv="content-type"
+        content="text/html; charset=UTF-8">
+    <title>LsFlyWebSocket|MineCraft</title>
+    <style>
+    body {
+    font: Helvetica;
+    }
+    </style>
+</head>
+<br><h1> LsFlyWebSocket</h1><h3>for minecraft bedrock</h3>
+<br>DEV BY: PikaYut#6244
+<br>
+<br>
+<br>
+<br>
+<br>
+ 
+<body>
+<hr>
+<form method="post" id="form" name="form" target="sendText">
+<table>
+    <tr><td><span style="font: Helvetica;">Command :</span></td><td><input class="bed" type="text" name="text" id="text" style="width:500px; height:1.5em; font-size:110%;"></td></tr>
+    <tr><td></td><td><button class="btn-send" id="send" onClick="btn();">envoyer</button></td></tr>
+
+
+</table>
+</form>
+<iframe name="sendText" style="width:0px;height:0px;border:0px;"></iframe>
+<br><br>
+
+    <br><h2>Command saisie(Logs)</h2>
+
+
+<center>
+  
+<textarea class="logs" id="log" rows="20" cols="50">
+</textarea>
+
+
+</center>
+<br><br>
+<script type="text/javascript">
+const $form = $('#form')
+$('.btn-send').on('click', evt => {
+  $form.submit()
+  $form[0].reset()
+    $('#form').val('');
+  return false
+})
+
+function btn() {
+ let time = getTime();
+ let input = "[" + time + "] " + document.getElementById('text').value + "\n";
+ let log = document.getElementById('log').value;
+ log += input
+ document.getElementById('log').value = log;
+}
+
+function sleep(waitMsec) {
+  var startMsec = new Date();
+ 
+  // boucle pendant des millu seconde (cpu）
+  while (new Date() - startMsec < waitMsec);
+}
+/*
+let btn = document.getElementById('send');
+btn.addEventListener('submit', function () {
+alert('a');
+let input = document.getElementById('text').value + "\n";
+let log = document.getElementById('log').value;
+log += input
+document.getElementById('log').value = log;
+}, false);
+*/
+function getTime() {
+  var date = new Date();
+  var hour = date.getHours() + 9;
+  var minute = date.getMinutes();
+  var second = date.getSeconds();
+  hour = ('0' + hour).slice(-2);
+  minute = ('0' + minute).slice(-2);
+  second = ('0' + second).slice(-2);
+  var time = hour + ':' + minute + ':' + second;
+  return time;
+}
+</script>
+</body>
+ 
+</html>
+
+<style>
+  .btn-send {
+    border-radius: 10px;
+    color: white;
+    background-color: black;
+  }
+
+  body {
+    background: #444444;
+  }
+
+  .logs {
+    border-radius: 28px;
+    width: 100%;
+    height: 250px;
+  }
+
+  .bed {
+    border-radius: 50px;
+  }
+</style>
